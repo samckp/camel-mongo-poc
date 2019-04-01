@@ -1,0 +1,1 @@
+# camel-mongo-poc
