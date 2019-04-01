@@ -7,7 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class CamelMongoPocApplication {
 
 	public static void main(String[] args) {
+
 		SpringApplication.run(CamelMongoPocApplication.class, args);
 	}
-
 }
