@@ -30,8 +30,8 @@ public class RestRouteBuilder  extends ExceptionRouteBuilder {
                 .post().to("direct:postEmployees")
                 .get().to("direct:getEmployees").description("All Employees list")
                 /*.get("/{empId}").to("direct:getEmployeeId").description("Find Employee by Id")
-                .put("/{empId}").to("direct:putEmpId").description("Modify Emp by ID")
-                .delete("/{empId}").to("direct:deleteEmployeeId").description("Delete emp by Id")*/
+                .put("/{empId}").to("direct:putEmpId").description("Modify Emp by ID")*/
+//                .delete("/{empId}").to("direct:deleteEmployeeId").description("Delete emp by Id")
         ;
 
         from("direct:getEmployees")
@@ -54,14 +54,15 @@ public class RestRouteBuilder  extends ExceptionRouteBuilder {
                 .setBody(simple("update employee set department='${body[department]}', employee_name='${body[employee_name]}'," +
                         "employee_salary = ${body[salary]} where id = ${header.empId}"))
                 .to("jdbc:dataSource")
-        ;
-
-        from("direct:deleteEmployeeId")
-                .setBody(simple("delete from employee where id = ${header.empId}"))
-                .to("jdbc:dataSource")
         ;*/
 
+//        from("direct:deleteEmployeeId")
+//                .to("mongodb:myDb?database=test&collection=customer&operation=delete")
+//                .log(LoggingLevel.INFO, "${body}")
+//        ;
 
-
+        from("direct:insertTwitterMsg")
+          .to("mongodb:myDb?database=test&collection=twitermsg&operation=insert")
+        ;
     }
 }
